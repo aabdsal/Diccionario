@@ -47,22 +47,22 @@ void borrar(BST *&info, string palabra){ // las palabras se ordenan de menor a m
             borrar(info->izquierdo,aux->palabra);
         }
         
-        return;
+        return ;
     }
     else if (palabra > info->palabra){borrar(info->derecho, palabra);} // el operador > ya mira si una palabra
     else{borrar(info->izquierdo, palabra);}   
 }
-void buscar(BST *&info, string palabra){
-    if (info == nullptr) {return;}
+bool buscar(BST *&info, string palabra){
+    if (info == nullptr) {    
+        return false;
+    }
     
     if(palabra == info->palabra){
-        cout << "Palabra encontrada" << endl;
-        cout << "Definición: " << info->definicion << endl;
-        return;
+        return true;
     }
 
-    if (palabra > info->palabra){buscar(info->derecho, palabra);} // ordenamos de menor a mayor de izquierda a derecha
-    else{buscar(info->izquierdo, palabra);}
+    if (palabra > info->palabra){ return buscar(info->derecho, palabra);} // ordenamos de menor a mayor de izquierda a derecha
+    else{return buscar(info->izquierdo, palabra);}
 }
 
 void imprimirInOrden(BST *&diccionario){ // Así imprimiremos las palabras en orden alfabetico
