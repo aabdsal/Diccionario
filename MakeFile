@@ -1,30 +1,29 @@
-CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Iinclude
 
 all: bin/main
 
 bin/main: bin/main.o bin/BST.o bin/Dictionary.o bin/Levenshtein.o bin/interfaz.o
-	$(CXX) $(CXXFLAGS) bin/main.o bin/BST.o bin/Dictionary.o bin/Levenshtein.o bin/interfaz.o -o bin/main
+	g++ $(CXXFLAGS) bin/main.o bin/BST.o bin/Dictionary.o bin/Levenshtein.o bin/interfaz.o -o bin/main
 
 bin/main.o: src/main.cpp include/BST.h include/Dictionary.h include/Levenshtein.h include/interfaz.h
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -c src/main.cpp -o bin/main.o
+	g++ $(CXXFLAGS) -c src/main.cpp -o bin/main.o
 
 bin/BST.o: src/BST.cpp include/BST.h
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -c src/BST.cpp -o bin/BST.o
+	g++ $(CXXFLAGS) -c src/BST.cpp -o bin/BST.o
 
 bin/Dictionary.o: src/Dictionary.cpp include/Dictionary.h include/Levenshtein.h include/BST.h
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -c src/Dictionary.cpp -o bin/Dictionary.o
+	g++ $(CXXFLAGS) -c src/Dictionary.cpp -o bin/Dictionary.o
 
 bin/Levenshtein.o: src/Levenshtein.cpp include/Levenshtein.h
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -c src/Levenshtein.cpp -o bin/Levenshtein.o
+	g++ $(CXXFLAGS) -c src/Levenshtein.cpp -o bin/Levenshtein.o
 
 bin/interfaz.o: src/interfaz.cpp include/interfaz.h include/Levenshtein.h include/Dictionary.h include/BST.h
 	mkdir -p bin
-	$(CXX) $(CXXFLAGS) -c src/interfaz.cpp -o bin/interfaz.o
+	g++ $(CXXFLAGS) -c src/interfaz.cpp -o bin/interfaz.o
 
 clean:
 	rm -rf bin *.gch
