@@ -2,24 +2,36 @@
 using namespace std;
 
 void portada(){
-    cout << endl << "************************************************************************************************" << endl;
-    cout << "************************************************************************************************" << endl;
-    cout << "*************************** Diccionario Automático *********************************************" << endl;
-    cout << "************************************************************************************************" << endl;
-    cout << "************************************************************************************************" << endl;
-    cout << "Made by Ali Abdelhamid" << endl << endl; 
+    string blanc = "";
+    espaienBlanc(blanc, 87);
+
+    cout << endl << blanc << "**************************************************************************************" << blanc << endl;
+    cout << blanc << "*                                                                                    *" << blanc << endl;
+    cout << blanc << "*                                DICCIONARIO AUTOMÁTICO                              *" << blanc << endl;
+    cout << blanc << "*                                                                                    *" << blanc << endl;
+    cout << blanc << "**************************************************************************************" << blanc << endl;
+    cout << blanc << "Hecho por Ali Abdelhamid" << endl << endl; 
 
 }
 void opciones(Diccionario &dic){
+    string blanc = "";
+    espaienBlanc(blanc, 87);
+
+    cout << blanc << "                              ¿Que deseas hacer?" << endl;
+    cout << blanc << "1: Buscar Palabra en el Diccionario.        2: Añadir entrada al diccionario." << blanc <<  endl;
+    cout << blanc << "3: Añadir palabras desde un archivo.        4: Borrar Palabra del Diccionario." << blanc << endl;
+    cout << blanc << "5: Mostrar todas las palabras guardadas.    6: Mostrar palabras más buscadas." << blanc << endl;
+    cout << blanc << "7: Salir del programa." << endl << endl;
     
-    cout << endl << "¿Que deseas hacer?☺️" << endl;
-    cout << "1: Buscar Palabra en el Diccionario.       2: Añadir entrada al diccionario." << endl;
-    cout << "3: Añadir palabras desde un archivo.       4: Borrar Palabra del Diccionario." << endl;
-    cout << "5: Mostrar todas las palabras guardadas.    6: Mostrar palabras más buscadas." << endl;
-    cout << "7: Salir del programa." << endl << endl;
+    cout << blanc << "Elige una: ";
+    int n; 
+    if(!(cin >> n)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Caracter no válido" << endl;
+        opciones(dic);
+    }
     
-    cout << "Elige una: ";
-    int n; cin >> n;
     string p, definicion;
 
     switch(n)
@@ -67,8 +79,15 @@ void opciones(Diccionario &dic){
     opciones(dic);
 }
 
-
-
+void espaienBlanc(string &p, int l){
+    struct ttysize ts;
+    ioctl(0, TIOCGSIZE, &ts);
+    
+    for (int i = 0; i < (int)(ts.ts_cols - l)/2; i++)
+    {
+        p+= " ";
+    }
+}
 
 
 

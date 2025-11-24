@@ -1,16 +1,42 @@
-# Diccionario en C++
+# 📚 Diccionario Automático en C++
 
-### Debido a que estoy dando la asignatura de Programación Avanzada en la Uni, he querido implementar todo lo que he dado en un mini-experimento.
+Proyecto de consola en C++ que implementa un **diccionario interactivo** usando estructuras de datos y algoritmos clásicos:
 
-#### Este proyecto implementa tablas hash y árboles binarios. Además, he usado algoritmos como Programación Dinamica, Divide y Venceras.
+- 🌳 Árbol de búsqueda binaria (BST)
+- 🧩 `unordered_map` (hash)
+- 🧠 Programación dinámica (distancia de Levenshtein)
+- 📈 Conteo de frecuencias para mostrar las palabras más consultadas
 
-#### También cabe destacar el manejo de ficheros, el uso de recursividad, la organización de los ficheros, la realización del Makefile, etc.
+---
 
-#### En este caso, en vez de usar clases, he usado structs para mayor simplicidad.
+## 🧾 Objetivo del proyecto
 
-- Lo interesante de todo esto ha sido resolver los bugs, como los segmentation fault, el paso por referencia de los parametros para guardar valores.
+Practicar:
 
-- Lo más interesante de todo ha sido 
+- Estructuras de datos (BST + hash).
+- Algoritmos de búsqueda y borrado en árboles.
+- Programación dinámica con distancia de Levenshtein para sugerencias.
+- Organización de un proyecto C++ con `src/`, `include/`, `bin/`, `data/` y `Makefile`.
 
+---
 
+## 🗂️ Estructura del proyecto
 
+```text
+AutoDiccionario/
+├─ src/
+│  ├─ main.cpp
+│  ├─ BST.cpp
+│  ├─ Dictionary.cpp
+│  ├─ Levenshtein.cpp
+│  └─ interfaz.cpp
+├─ include/
+│  ├─ BST.h
+│  ├─ Dictionary.h
+│  ├─ Levenshtein.h
+│  └─ interfaz.h
+├─ data/
+│  └─ palabras.txt        # fichero de ejemplo
+├─ bin/
+│  └─ main                # ejecutable generado
+└─ Makefile
