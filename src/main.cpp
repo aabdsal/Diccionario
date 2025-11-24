@@ -1,6 +1,3 @@
-#include "Levenshtein.h"
-#include "Dictionary.h"
-#include "BST.h"
 #include "interfaz.h"
 
 int main(int argc, char const *argv[])
@@ -8,7 +5,8 @@ int main(int argc, char const *argv[])
     try
     {
         portada();
-        opciones();
+        Diccionario dic;
+        opciones(dic);
     }
     catch(const std::exception& e)
     {

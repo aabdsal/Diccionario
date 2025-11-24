@@ -1,10 +1,10 @@
-casa Lugar donde viven las personas; edificio destinado a ser vivienda.
-perro Animal mamífero doméstico de cuatro patas que suele usarse como mascota o para guardar.
-arbol Planta de tronco leñoso que se ramifica a cierta altura del suelo.
-libro Conjunto de hojas encuadernadas que contienen texto, imágenes o ambos.
-mesa Mueble con una superficie plana sostenida por patas que se usa para comer o trabajar.
-ventana Abertura en una pared que permite la entrada de luz y aire, normalmente con cristal.
-coche Vehículo de motor con cuatro ruedas que se usa para transportar personas.
-escuela Lugar donde se enseña y se aprende; centro educativo.
-ordenador Máquina electrónica capaz de procesar información siguiendo instrucciones.
-ciudad Núcleo urbano grande con muchos habitantes, edificios y servicios.
+Casa Lugar donde viven las personas; edificio destinado a ser vivienda.
+Perro Animal mamífero doméstico de cuatro patas que suele usarse como mascota o para guardar.
+Arbol Planta de tronco leñoso que se ramifica a cierta altura del suelo.
+Libro Conjunto de hojas encuadernadas que contienen texto, imágenes o ambos.
+Mesa Mueble con una superficie plana sostenida por patas que se usa para comer o trabajar.
+Ventana Abertura en una pared que permite la entrada de luz y aire, normalmente con cristal.
+Coche Vehículo de motor con cuatro ruedas que se usa para transportar personas.
+Escuela Lugar donde se enseña y se aprende; centro educativo.
+Ordenador Máquina electrónica capaz de procesar información siguiendo instrucciones.
+Ciudad Núcleo urbano grande con muchos habitantes, edificios y servicios.

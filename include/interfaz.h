@@ -4,6 +4,6 @@
 #include "Dictionary.h"
 // añadir interfaz donde permita elegir al usuario que acciones realizar
 void portada();
-void opciones();
+void opciones(Diccionario &dic);
 
 #endif

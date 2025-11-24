@@ -1,6 +1,6 @@
 #include "Dictionary.h"
 
-void insertarPalabra(Diccionario &dic, string &p, string &d){
+void insertarPalabra(Diccionario &dic, const string &p, const string &d){
     dic.hash[p].definicion = d;
     if (!buscar(dic.raiz,p))
     {
@@ -31,12 +31,13 @@ void inOrdenLev(BST *&dic, const string &pUsuario, vector <string> &listaSugeren
 }
 
 void buscarPalabra(Diccionario &dic, const string &p){
-    auto it = dic.hash.find(p);
-    if (it != dic.hash.end()) {
+    
+    if (dic.hash.find(p) != dic.hash.end()) {
         cout << "Palabra encontrada" << endl;
-        cout << "Definición: " << it->second.definicion << endl;
+        cout << "Definición: " << dic.hash[p].definicion << endl;
+        dic.hash[p].frecuencia++;
     }
-    else{
+    else{        
         int mejorDistancia = INT_MAX;
         vector <string> listaSugerencias;
         inOrdenLev(dic.raiz, p, listaSugerencias, mejorDistancia);
@@ -45,7 +46,7 @@ void buscarPalabra(Diccionario &dic, const string &p){
            cout << "No se encuentran sugerencias para tu palabra ❌" << endl;
         }
         else{
-            cout << "¿quiza querías decir: ?";
+            cout << "Quiza querías decir:";
             for (auto parecidas : listaSugerencias)
             {
                 cout << parecidas << " ";
@@ -53,9 +54,8 @@ void buscarPalabra(Diccionario &dic, const string &p){
             cout << "☺️" <<  endl;
         }
     }
-    it->second.frecuencia++;
 }
-void borrarPalabra(Diccionario dic, const string &p){
+void borrarPalabra(Diccionario &dic, const string &p){
     dic.hash.erase(p);
     if (buscar(dic.raiz, p))
     {
@@ -64,7 +64,7 @@ void borrarPalabra(Diccionario dic, const string &p){
     }
 }
 
-void leerArchivo(){
+void leerArchivo(Diccionario &dic){
     string fich;
     cout << "Dime el nombre del fichero: ";
     cin >> fich;
@@ -78,19 +78,25 @@ void leerArchivo(){
 
     while (getline(fichero, fich))
     {
-        string p, d;
-        istringstream ss;
+        if (fich.empty())
+        {
+            continue;
+        }
+        
+        size_t i = fich.find(' ');
 
-        ss >> p >> d;
-        Diccionario dic;
+        string p, d;
+        p = fich.substr(0, i);
+        d = fich.substr(i + 1);
+
         insertarPalabra(dic, p, d);
     }
     fichero.close();
 }
 
 void mostrarTopBuscadas(Diccionario &dic, int N) {
-    // 1. Pasar del hash a un vector
-    vector<pair<string, int>> v; // (palabra, frecuencia)
+
+    vector<pair<string, int>> v;
 
     for (const auto &par : dic.hash) {
         const string &palabra = par.first;
@@ -103,17 +109,16 @@ void mostrarTopBuscadas(Diccionario &dic, int N) {
         return;
     }
 
-    // 2. Ordenar por frecuencia descendente
-    sort(v.begin(), v.end(),
-         [](const auto &a, const auto &b) {
-             return a.second > b.second; // mayor frecuencia primero
-         });
+    sort(v.begin(), v.end(), [](const auto &a, const auto &b) {return a.second > b.second;});
 
-    // 3. Imprimir las primeras N
     cout << "Palabras mas buscadas:\n";
+    
     int limite = min(N, (int)v.size());
+
     for (int i = 0; i < limite; ++i) {
-        cout << i + 1 << ". " << v[i].first
-             << " (buscada " << v[i].second << " veces)\n";
+
+        if(v[i].second != 0){
+            cout << i + 1 << ". " << v[i].first << " (buscada " << v[i].second << " veces)\n";
+        }      
     }
 }
