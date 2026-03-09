@@ -2,16 +2,15 @@
 #define BST_H
 
 #include <iostream>
-using namespace std;
 
 struct BST // Binary Search tree
 {
-    string palabra;
-    string definicion;
+    std::string palabra;
+    std::string definicion;
     BST *izquierdo;
     BST *derecho;
 
-    BST(string palabra, string definicion){
+    BST(std::string palabra, std::string definicion){
         this->palabra = palabra;
         this->definicion = definicion;
         izquierdo = nullptr;
@@ -20,11 +19,11 @@ struct BST // Binary Search tree
 };
 // No puedes crear tipos de datos de strucutras fuera de una función
 
-void insert(BST *&info, string palabra, string definicion);
-void borrar(BST *&info, string palabra);
-bool buscar(BST *&info, string palabra);
+void insert(BST *&info, std::string palabra, std::string definicion);
+void borrar(BST *&info, std::string palabra);
+bool buscar(BST *&info, std::string palabra);
 void imprimirInOrden(BST *&diccionario);
-void imprimirRango(BST *&diccionario, string &desde, string &hasta);
+void imprimirRango(BST *&diccionario, std::string &desde, std::string &hasta);
 
 
 /*void func(){

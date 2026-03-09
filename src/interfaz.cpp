@@ -1,7 +1,8 @@
 #include "interfaz.h"
 using namespace std;
 
-void portada(){
+void portada()
+{
     string blanc = "";
     espaienBlanc(blanc, 87);
 
@@ -13,7 +14,8 @@ void portada(){
     cout << blanc << "Hecho por Ali Abdelhamid" << endl << endl; 
 
 }
-void opciones(Diccionario &dic){
+void opciones(Diccionario &dic)
+{
     string blanc = "";
     espaienBlanc(blanc, 87);
 
@@ -25,7 +27,8 @@ void opciones(Diccionario &dic){
     
     cout << blanc << "Elige una: ";
     int n; 
-    if(!(cin >> n)){
+    if(!(cin >> n))
+    {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Caracter no válido" << endl;
@@ -36,50 +39,51 @@ void opciones(Diccionario &dic){
 
     switch(n)
     {
-    case 1:
-        cout << "Dime la palabra a buscar: ";
-        cin >> p;
-        buscarPalabra(dic, p);
-        break;
-    
-    case 2:
-        cout << "Dime la palabra a añadir: " ;
-        cin >> p;
-        cin.ignore();
-        cout << endl << "Definición: ";
-        getline(cin, definicion);
-        insertarPalabra(dic, p, definicion);
-        cout << "Palabra insertada con éxito ✅" << endl;
-        break;
-    
-    case 3:
-        leerArchivo(dic);
-        cout << "Fichero insertado con éxito ✅" << endl;
-        break;
-    
-    case 4:
-        cout << "Dime la palabra a borrar: ";
-        cin >> p;
-        borrarPalabra(dic, p);
-        break;
-    
-    case 5:
-        imprimirInOrden(dic.raiz);
-        break;
-    
-    case 6:
-        mostrarTopBuscadas(dic, 5);
-        break;
-    case 7:
-        return;
-    default:
-        cout << "Número inválido" << endl;
-        break;
+        case 1:
+            cout << "Dime la palabra a buscar: ";
+            cin >> p;
+            buscarPalabra(dic, p);
+            break;
+        
+        case 2:
+            cout << "Dime la palabra a añadir: " ;
+            cin >> p;
+            cin.ignore();
+            cout << endl << "Definición: ";
+            getline(cin, definicion);
+            insertarPalabra(dic, p, definicion);
+            cout << "Palabra insertada con éxito ✅" << endl;
+            break;
+        
+        case 3:
+            leerArchivo(dic);
+            cout << "Fichero insertado con éxito ✅" << endl;
+            break;
+        
+        case 4:
+            cout << "Dime la palabra a borrar: ";
+            cin >> p;
+            borrarPalabra(dic, p);
+            break;
+        
+        case 5:
+            imprimirInOrden(dic.raiz);
+            break;
+        
+        case 6:
+            mostrarTopBuscadas(dic, 5);
+            break;
+        case 7:
+            return;
+        default:
+            cout << "Número inválido" << endl;
+            break;
     }
     opciones(dic);
 }
 
-void espaienBlanc(string &p, int l){
+void espaienBlanc(string &p, int l)
+{
     struct ttysize ts;
     ioctl(0, TIOCGSIZE, &ts);
     

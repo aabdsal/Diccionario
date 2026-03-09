@@ -2,19 +2,29 @@
 
 using namespace std;
 
-void insert(BST *&info, string palabra, string definicion){
+void insert(BST *&info, string palabra, string definicion)
+{
     if (info == nullptr)
     {
         info = new BST(palabra, definicion);
         return;
     }
     
-    if (palabra > info->palabra){insert(info->derecho, palabra, definicion);} // ordenamos de menor a mayor de izquierda a derecha
-    else{insert(info->izquierdo, palabra, definicion);}
+    if (palabra > info->palabra) // ordenamos de menor a mayor de izquierda a derecha
+    {
+        insert(info->derecho, palabra, definicion);
+    } 
+    else
+    {
+        insert(info->izquierdo, palabra, definicion);
+    }
 }
 
 void borrar(BST *&info, string palabra){ // las palabras se ordenan de menor a mayor, de izquierda a derecha
-    if (info == nullptr){return;}
+    if (info == nullptr)
+    {
+        return;
+    }
     
     if (palabra == info->palabra)
     { 
@@ -49,37 +59,63 @@ void borrar(BST *&info, string palabra){ // las palabras se ordenan de menor a m
         
         return ;
     }
-    else if (palabra > info->palabra){borrar(info->derecho, palabra);} // el operador > ya mira si una palabra
-    else{borrar(info->izquierdo, palabra);}   
+    else if (palabra > info->palabra) // el operador > ya mira si una palabra es mayor que otra por orden alfabetico
+    {
+        borrar(info->derecho, palabra);
+    } 
+    else
+    {
+        borrar(info->izquierdo, palabra);
+    }   
 }
-bool buscar(BST *&info, string palabra){
-    if (info == nullptr) {    
+bool buscar(BST *&info, string palabra)
+{
+    if (info == nullptr) 
+    {    
         return false;
     }
     
-    if(palabra == info->palabra){
+    if(palabra == info->palabra)
+    {
         return true;
     }
 
-    if (palabra > info->palabra){ return buscar(info->derecho, palabra);} // ordenamos de menor a mayor de izquierda a derecha
-    else{return buscar(info->izquierdo, palabra);}
+    if (palabra > info->palabra) // ordenamos de menor a mayor de izquierda a derecha
+    { 
+        return buscar(info->derecho, palabra);
+    } 
+    else
+    {
+        return buscar(info->izquierdo, palabra);
+    }
 }
 
-void imprimirInOrden(BST *&diccionario){ // Así imprimiremos las palabras en orden alfabetico
-    if (diccionario == nullptr){return;}
+void imprimirInOrden(BST *&diccionario) // Así imprimiremos las palabras en orden alfabetico
+{ 
+    if (diccionario == nullptr)
+    {
+        return;
+    }
     
     imprimirInOrden(diccionario->izquierdo);
     cout << "Palabra: " << diccionario->palabra << " Definición: " << diccionario->definicion << endl << endl;
     imprimirInOrden(diccionario->derecho);
 }
 
-void imprimirRango(BST *&diccionario, const string &desde, const string &hasta){
+void imprimirRango(BST *&diccionario, const string &desde, const string &hasta)
+{
 
-    if (diccionario == nullptr){return;}
+    if (diccionario == nullptr)
+    {
+        return;
+    }
+
     imprimirRango(diccionario->izquierdo, desde, hasta);
+
     if (diccionario->palabra >= desde && diccionario->palabra <= hasta) // los operadores ya controlan
     {
         cout << "Palabra: " << diccionario->palabra << " Definición: " << diccionario->definicion << endl << endl;
     }
+
     imprimirRango(diccionario->derecho, desde, hasta);
 }

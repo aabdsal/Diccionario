@@ -5,10 +5,17 @@
 using namespace std;
 
 // implementar programacion dinamica
-int levenshtein(const string &from, const string &to, int i, int j, vector <vector <int> > &memo){
+int levenshtein(const string &from, const string &to, int i, int j, vector <vector <int> > &memo)
+{
 
-    if (i == 0){return j;}
-    if(j == 0){return i;}
+    if (!i)
+    {
+        return j;
+    }
+    if(!j)
+    {
+        return i;
+    }
 
     if (memo[i][j] != -1)
     {
